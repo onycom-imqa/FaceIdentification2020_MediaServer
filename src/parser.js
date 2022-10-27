@@ -7,11 +7,13 @@ var verifySheet = wb.Sheets["video_verify"];
 var identifySheet = wb.Sheets["video_identify"];
 var behaviorSheet = wb.Sheets["video_behavior"];
 var behaviorPersonSheet = wb.Sheets["video_behavior_person"];
+var waitinglineSheet = wb.Sheets["video_waitingline"]
 
 var verify = xlsx.utils.sheet_to_json(verifySheet);
 var identify = xlsx.utils.sheet_to_json(identifySheet);
 var behavior = xlsx.utils.sheet_to_json(behaviorSheet);
 var behaviorPerson = xlsx.utils.sheet_to_json(behaviorPersonSheet);
+var waitingline = xlsx.utils.sheet_to_json(waitinglineSheet);
 
 function get_total_test(type, channel) {
     switch(type) {
@@ -27,7 +29,12 @@ function get_total_test(type, channel) {
     case 'video_abnormal_person':
         logger.info(`TOTAL TEST(${type}) : ${behaviorPerson.length}`)
         return behaviorPerson.length;
+    case 'video_waitingline':
+        logger.info(`TOTAL TEST(${type}) : ${waitingline.length}`)
+        return waitingline.length;
     }
+
+
 }
 
 function get_media_info(type, test_id, channel) {
@@ -39,20 +46,6 @@ function get_media_info(type, test_id, channel) {
     case 'video_identify':
         if(channel == 0) {
             return identify[test_id].channel_0
-        } else if(channel == 1) {
-            return identify[test_id].channel_1
-        } else if(channel == 2) {
-            return identify[test_id].channel_2
-        } else if(channel == 3) {
-            return identify[test_id].channel_3
-        } else if(channel == 4) {
-            return identify[test_id].channel_4
-        } else if(channel == 5) {
-            return identify[test_id].channel_5
-        } else if(channel == 6) {
-            return identify[test_id].channel_6
-        } else if(channel == 7) {
-            return identify[test_id].channel_7
         }
     case 'video_abnormal':
         if(channel == 0) {
@@ -89,6 +82,25 @@ function get_media_info(type, test_id, channel) {
             return behaviorPerson[test_id].channel_6
         } else if(channel == 7) {
             return behaviorPerson[test_id].channel_7
+        }
+
+    case 'video_waitingline':
+        if(channel == 0) {
+            return waitingline[test_id].channel_0
+        } else if(channel == 1) {
+            return waitingline[test_id].channel_1
+        } else if(channel == 2) {
+            return waitingline[test_id].channel_2
+        } else if(channel == 3) {
+            return waitingline[test_id].channel_3
+        } else if(channel == 4) {
+            return waitingline[test_id].channel_4
+        } else if(channel == 5) {
+            return waitingline[test_id].channel_5
+        } else if(channel == 6) {
+            return waitingline[test_id].channel_6
+        } else if(channel == 7) {
+            return waitingline[test_id].channel_7
         }
     }
 }

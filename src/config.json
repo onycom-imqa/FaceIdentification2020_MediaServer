@@ -1,7 +1,6 @@
 {
     "MAX_PUBLISH": 2,
 
-    
     "IP_ADDR": "192.168.0.100",
     "TCP_PORT": 9000,
 
@@ -14,5 +13,6 @@
     "ONE_REQUEST": "video/one/sendtime/end/",
     "MANY_REQUEST": "video/many/sendtime/end/",
     "BEHAVIOR_REQUEST": "video/behavior/sendtime/end",
-    "BEHAVIOR_PERSON_REQUEST": "video/behavior-person/sendtime/end"
+    "BEHAVIOR_PERSON_REQUEST": "video/behavior-person/sendtime/end",
+    "WAITING_LINE": "video/waiting_line/sendtime/end"
 }

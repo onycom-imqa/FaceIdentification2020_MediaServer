@@ -4,7 +4,7 @@ const moment = require('moment');
 
 const { logger } = require('./logger.js');
 const { get_total_test, get_media_info } = require('./parser.js');
-const { HTTP_ADDRESS, HTTP_PORT, ONE_REQUEST, MANY_REQUEST, BEHAVIOR_REQUEST, BEHAVIOR_PERSON_REQUEST } = require('./config.json');
+const { HTTP_ADDRESS, HTTP_PORT, ONE_REQUEST, MANY_REQUEST, BEHAVIOR_REQUEST, BEHAVIOR_PERSON_REQUEST, WAITING_LINE } = require('./config.json');
 
 const channel = Number(process.env["channel"]);
 const RTMP_PORT = require('./config.json').MEDIA_PORT_BASE + channel;
@@ -47,6 +47,10 @@ process.on('message', message => {
         case 'video_abnormal_person':
             urlPath = BEHAVIOR_PERSON_REQUEST;
             break;
+        case 'video_waitingline':
+            urlPath = WAITING_LINE;
+            break;
+
 
         default:
             logger.debug(`Unknown Type : ${JSON.stringify(message.data)}`)
